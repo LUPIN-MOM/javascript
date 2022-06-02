@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title> switch 구문 </title>
+  <script>
+ 
+    let luckyNum=prompt("행운의 번호를 입력하세요.")
+        
+    luckyNum=parseInt(luckyNum)
+    /* 
+    if(luckyNum==3){
+        document.write("당첨!! 냉장고")
+    }else if(luckyNum==8){
+        document.write("당첨!! TV")
+    }else if(luckyNum==12){
+        document.write("당첨!! 노트북")
+    }else{
+        document.write("꽝!!")
+    }
+    */
+
+    switch(luckyNum){
+        case 3 :
+            document.write("당첨!! 냉장고")
+            break;
+
+        case 8 :
+        document.write("당첨!! tv")
+            break;
+
+        case 12 :
+            document.write("당첨!! 노트북")
+            break;
+
+        default :
+        document.write("꽝!!")
+
+    }
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
