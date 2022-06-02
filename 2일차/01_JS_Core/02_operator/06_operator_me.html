@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title> 비교연산자 논리연산자 조건연산자 연습 </title>
+  <script>
+  
+  let a=1;
+  let b="1";
+
+  console.log(a==b) //a==b a값과 b값이 서로 같다.
+    
+//   console.log(a!=b) //a!=b a값과 b값이 서로 같지 않다.
+// console.log(a===b) // 값도 서로 같고 데이터 형식도 같다.
+
+    a=true;
+    b=!a //!a 는 not a라는 의미
+    console.log(b)
+
+    a=10;
+    b=20;
+    // console.log(a>=5 && b<=10)  //비교연산자: && 2개의 조건을 && true/false
+    console.log(a>=5 || b<=10)   //논리연산자: || 2개중 하나만 만족해도 true/false
+
+    /* 조건연산자
+    조건 ? 참일때 결과 : 거짓일때 결과
+
+    */ 
+    console.log( a<=b ? "맞아요" : "틀려요") //조건연산자 : ?
+
+  
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
