@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title> while 구문_07 연습 </title>
+  <script>
+  
+    let sum=0;  //null이라는 값을 넣으면 합계를 낼수가 없음.
+    let count=0;
+    // while(true) 무한반복문을 사용해야할때 사용함 for 문에서는 사용하지않음.
+    while(true){
+        let value=prompt("더 할 숫자를 입력하세요.")
+        value=parseInt(value);
+        if(value==0){
+            document.write("종료합니다.<br>")
+            break;
+        }else{
+            sum+=value;
+            document.write("합계:"+sum+"<br>")
+            count++;
+        }
+    }
+
+    document.write("총" + count + " 번 실행했습니다.")
+  
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
