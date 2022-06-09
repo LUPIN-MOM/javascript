@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>글렘쉘</title>
+  <title>부모요소찾기</title>
   <link rel="stylesheet" type="text/css" href="css/reset.css">
   <link rel="stylesheet" type="text/css" href="css/style.css"> 
 
@@ -11,23 +11,28 @@
   <!--jQuery 소스삽입 ( 1.12 버전이 좋음 ) cdnjs 플러그인 사용 () -->
 
   <script>
-  document.addEventListener('DOMContentLoaded', ()=>{
-
-    const divs=document.querySelectorAll('div')  //값이 변하는 값이 아니라서 const로 대입
-    alert(divs.length)   //div의 length(개수)
-
-    // const mainMenu=document.querySelectorAll('#mainmenu_list>li')
-    // alert(mainMenu.length)
-
-    // const subMenu=document.querySelectorAll('.submenu_list')
-    // alert(subMenu.length)
-
-  })
-   
   
-  
-  
-  
+    // parent() : 부모요소 찾는 함수 ( 직계부모 - 조상부모: parents() )
+		
+// 	$(document).ready(function(){      
+            
+//       var $subMenuList=$('.submenu_list') 
+//       var $mainMenu=$subMenuList.parent()  // 부모요소를 parent로 
+
+//       $mainMenu.css('border', 'solid 3px yellow')
+
+//   });	
+
+ 
+
+$(document).ready(function(){      
+            
+            var $subMenuList=$('.submenu_list') 
+            var $mainMenu=$subMenuList.parents()  // 상위부모요소 parents로 
+      
+            $mainMenu.css('border', 'solid 3px yellow')
+      
+        });	
   
   
   </script>
@@ -50,7 +55,7 @@
       <h1 id="logo">
         <a href="index.php"><img src="images/logo.gif" alt="글렘쉘"></a>
       </h1>
-     
+      
       <h2 class="hidden">메인메뉴</h2>
       <ul id="mainmenu_list">
         <li><a href="brand.php"><img src="images/mainmenu_01.gif" alt="브랜드소개"></a>
@@ -180,7 +185,7 @@
   <div id="footer_wrap">
     <div id="footer_inner">
       <h2 class="hidden">하단정보영역</h2>
-     
+      
     </div>
   </div>
  

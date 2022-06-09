@@ -11,18 +11,25 @@
   <!--jQuery 소스삽입 ( 1.12 버전이 좋음 ) cdnjs 플러그인 사용 () -->
 
   <script>
-  document.addEventListener('DOMContentLoaded', ()=>{
 
-    const divs=document.querySelectorAll('div')  //값이 변하는 값이 아니라서 const로 대입
-    alert(divs.length)   //div의 length(개수)
 
-    // const mainMenu=document.querySelectorAll('#mainmenu_list>li')
-    // alert(mainMenu.length)
+//   $(document).ready(function(){
 
-    // const subMenu=document.querySelectorAll('.submenu_list')
-    // alert(subMenu.length)
+//       var $subMenuList3=$('.submenu_list').eq(3)
+//       var $news=$subMenuList3.children().eq(2)
 
-  })
+//       $news.css('border','solid 3px yellow')
+       
+//     })
+
+    $(document).ready(function(){
+
+        var $subMenuList1=$('.submenu_list').eq(1)
+        var $magic=$subMenuList1.children().eq(2)
+
+        $magic.css('border','solid 3px yellow')
+
+    })
    
   
   
