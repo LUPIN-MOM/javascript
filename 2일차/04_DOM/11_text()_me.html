@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>요소생성추가</title>
+  <title>해당요소텍스트변경</title>
   <link rel="stylesheet" type="text/css" href="css/reset.css">
   <link rel="stylesheet" type="text/css" href="css/style.css"> 
 
@@ -12,37 +12,18 @@
 
   <script>
   
-    // $(html) : 임의의 html 요소 생성 (없었던 요소를 생성하는 일)
+    // text() : 해당요소 텍스트 변경    
 
-    // insertBefore() : 해당요소 앞에 추가   insertAfter() : 해당요소 뒤에 추가 
-
-    // prependTo() : 해당요소 안에 맨 앞에 추가   appendTo() : 해당요소 안에 맨 뒤에 추가  
-
-    // html() : 해당요소 안에 기존요소들 모두 지우고 추가  ( 순서주의   넣을곳.html(넣을대상) )
 		
-	$(document).ready(function(){      
-            
-      var $hotInfo=$("<li><a href='#'>HOTINFO</a></li>"	);
+	$(document).ready(function(){
 
-      var $subMenuList=$(".submenu_list"); // 클래스 이름으로 전체 서브메뉴 찾음 
-      var $subMenuList3=$subMenuList.eq(3); // 3번째 서브메뉴 찾음 
-      var $news=$subMenuList3.children().eq(2); // 3번째 서브메뉴 에서 2번째 자식요소 찾음 (추가 생성된 hotInfo를 앞에넣을 news )
+        var $hotInfo=$("<li><a href='#'>HOTINFO</a></li>");
+        var $subMenuList3=$('.submenu_list').eq(3);
+        var $news=$subMenuList3.children().eq(2);
 
-      // $news.css("border","solid 3px yellow") // news 잘 찾았는지 border 로 확인 
-
-      $hotInfo.css("border","solid 3px yellow")// hotInfo 에 border 속성 지정 
-    
-      $hotInfo.insertBefore($news) //  news 앞에 hotInfo를 추가 
-      $hotInfo.insertAfter($news) //  news 뒤에 hotInfo를 추가 
-
-      $hotInfo.prependTo($subMenuList3) // 3번째 서브메뉴 안에 맨 앞에 추가 
-
-      $hotInfo.appendTo($subMenuList3) // 3번째 서브메뉴 안에 맨 뒤에 추가 
-
-      $subMenuList3.html($hotInfo) // 3번째 서브메뉴 안에 기존요소를 모두 지우고 hotInfo 를 추가 
-			
-			
-    });	
+        $hotInfo.insertBefore($news);
+        $hotInfo.children().text("변경메뉴")    //text : 텍스트 변경
+    })
   
   
   </script>
@@ -65,7 +46,7 @@
       <h1 id="logo">
         <a href="index.php"><img src="images/logo.gif" alt="글렘쉘"></a>
       </h1>
-      
+     
       <h2 class="hidden">메인메뉴</h2>
       <ul id="mainmenu_list">
         <li><a href="brand.php"><img src="images/mainmenu_01.gif" alt="브랜드소개"></a>
@@ -195,7 +176,7 @@
   <div id="footer_wrap">
     <div id="footer_inner">
       <h2 class="hidden">하단정보영역</h2>
-     
+      
     </div>
   </div>
  
