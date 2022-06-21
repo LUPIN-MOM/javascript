@@ -50,26 +50,46 @@
           
     */
 
+    // $(document).ready(function(){
+
+    //   var $wrap=$('#wrap')
+    //   var $imgWrap=$('#img_wrap')
+
+    //   $('#img1').on('click', movingImgLeft)
+    //   $('#img2').on('click', movingImgRight)
+
+    //   function movingImgLeft(){
+    //     $imgWrap.stop()
+    //     $imgWrap.animate({left:-$wrap.innerWidth()}, 500, 'easeOutCubic')
+    //   }
+
+    //   function movingImgRight(){
+    //     $imgWrap.stop()
+    //     $imgWrap.animate({left:0}, 500, 'easeOutCubic')
+    //   }
+
+    // })
+	
     $(document).ready(function(){
 
-      var $wrap=$('#wrap')
-      var $imgWrap=$('#img_wrap')
+    var $wrap=$('#wrap')
+    var $imgWrap=$('#img_wrap')
 
-      $('#img1').on('click', movingImgLeft)
-      $('#img2').on('click', movingImgRight)
+    $('#img1').on('click', movingImgLeft)
+    $('#img2').on('click', movingImgRight)
 
-      function movingImgLeft(){
-        $imgWrap.stop()
-        $imgWrap.animate({left:-$wrap.innerWidth()}, 500, 'easeOutCubic')
-      }
+    function movingImgLeft(){
+      var endX=-$wrap.outerWidth()
+      $imgWrap.stop()
+      $imgWrap.animate({left:endX},500,'easeOutCubic')
+    }
 
-      function movingImgRight(){
-        $imgWrap.stop()
-        $imgWrap.animate({left:0}, 500, 'easeOutCubic')
-      }
+    function movingImgRight(){
+      $imgWrap.stop()
+      $imgWrap.animate({left:0},500,'easeOutCubic')
+    }
 
     })
-	
 		
     
 

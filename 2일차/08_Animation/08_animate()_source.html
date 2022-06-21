@@ -56,37 +56,45 @@
           
     */
 
-    $(document).ready(function(){
+    // $(document).ready(function(){
+
+    //   var $panel=$('#panel')
+    //   var $imgWrap=$('#img_wrap')
+
+    //   var endX=$panel.innerWidth()-$imgWrap.innerWidth()
+
+    //   $('#start_btn').on('click', movingImg)
+
+    //   function movingImg(){
+
+    //     $imgWrap.stop()
+    //     $imgWrap.css({left:0, opacity:1})
+        
+    //     $imgWrap.animate({left:endX, opacity:0}, 3000, 'easeOutCubic', function(){
+    //       $imgWrap.css({left:0, opacity:1})
+    //     })
+
+    //   }
+
+
+    // })
+
+   $(document).ready(function(){
 
       var $panel=$('#panel')
       var $imgWrap=$('#img_wrap')
 
-      var endX=$panel.innerWidth()-$imgWrap.innerWidth()
+      $('#start_btn').on('click', MovingImg)
 
-      $('#start_btn').on('click', movingImg)
-
-      function movingImg(){
-
-        $imgWrap.stop()
+      function MovingImg(){
+        $imgWrap.stop();
         $imgWrap.css({left:0, opacity:1})
-        
-        $imgWrap.animate({left:endX, opacity:0}, 3000, 'easeOutCubic', function(){
-          $imgWrap.css({left:0, opacity:1})
-        })
-
-      }
-
-
-    })
-	
-		
-
-
-
-
-
-
-    
+        var endX=$("#panel").innerWidth()-$imgWrap.outerWidth()
+          $imgWrap.animate({left:endX,opacity:0},1000, 'easeOutCubic', function(){
+            $imgWrap.css({left:0, opacity:1})
+          })
+    }
+  })
     
   </script>
 

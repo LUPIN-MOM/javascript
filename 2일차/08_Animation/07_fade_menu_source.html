@@ -31,24 +31,47 @@
 
   <script>   
   
+    // $(document).ready(function(){
+
+    //   var $imgMenu=$('#img_list>li')
+
+    //   $imgMenu.css({opacity:0.3})
+
+    //   $imgMenu.on('mouseenter', activateImgMenu)
+    //   $imgMenu.on('mouseleave', inActivateImgMenu)
+
+    //   function activateImgMenu(){
+    //     //$(this).stop()
+    //     $(this).stop().fadeTo(500, 1, 'easeOutCubic')
+    //   }
+
+    //   function inActivateImgMenu(){
+    //     //$(this).stop()
+    //     $(this).stop().fadeTo(500, 0.3, 'easeOutCubic')
+    //   }
+
+
+    // })
+
     $(document).ready(function(){
 
-      var $imgMenu=$('#img_list>li')
+    var $imgMenu=$('#img_list>li')
 
-      $imgMenu.css({opacity:0.3})
+    $imgMenu.css('opacity',0.3)
 
-      $imgMenu.on('mouseenter', activateImgMenu)
-      $imgMenu.on('mouseleave', inActivateImgMenu)
+    $imgMenu.on('mouseenter', activateMenu)
+    $imgMenu.on('mouseleave', inActivateMenu)
 
-      function activateImgMenu(){
-        //$(this).stop()
-        $(this).stop().fadeTo(500, 1, 'easeOutCubic')
-      }
+    function activateMenu(){
+      $(this).stop();
+      $(this).fadeTo(200, 1, 'easeOutCubic')                   //$(this) :마우스를 올린 li
+    }
 
-      function inActivateImgMenu(){
-        //$(this).stop()
-        $(this).stop().fadeTo(500, 0.3, 'easeOutCubic')
-      }
+    function inActivateMenu(){
+      $(this).stop();
+      $(this).fadeTo(200, 0.3, 'easeOutCubic')                   //$(this) :마우스를 올린 li
+    }
+    
 
 
     })

@@ -17,7 +17,52 @@
   <script>      
     
     
+    $(document).ready(function() {
+      
+      var $mainMenu=$('#mainmenu_list>li')    //mainmenu_list>li : 직계자식 li만 적용
+      var $subMenu=$('.submenu_list')
+      var $subMenu_Bg=$('#sub_bg')
+      var $headerInner=$('#header_inner')
+      var isMenuOpen=false;   //상태변수
 
+      $subMenu.hide();
+      $subMenu_Bg.hide();
+
+      
+      $mainMenu.on('mouseenter', slideDownMenu)
+      $headerInner.on('mouseleave', slideUpMenu)
+     
+      function slideDownMenu(){
+        $subMenu_Bg.slideDown(500, 'easeOutCubic', function(){
+          $subMenu.show()
+        })
+      }
+
+      
+      function slideUpMenu(){
+        $subMenu.hide();
+        $subMenu_Bg.slideUp(500, 'easeOutCubic')
+      }
+
+    //   function slideDownMenu(){
+    //     if(isMenuOpen==false){
+    //       $subMenu_Bg.slideDown(500, 'easeOutCubic', function(){
+    //       $subMenu.show();
+    //       isMenuOpen=true;
+    //     })
+    //   }
+    // }
+
+    // function slideUpMenu(){
+    //     if(isMenuOpen==true){
+    //       $subMenu.hide();
+    //       $subMenu_Bg.slideUp(500, 'easeOutCubic', function(){         
+    //       isMenuOpen=false;
+    //     })
+    //   }
+    // }
+      
+    });
 
 
 
