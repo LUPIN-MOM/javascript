@@ -22,11 +22,12 @@
     
     div#grayLayer{          
       height:100%; width:100%; position:absolute; left:0; top:0;      
-      background:black; opacity:0;
+      background:black; opacity:0; 
     }   
 
     div#overLayer{      
       width:650px; height:443px; position:absolute; top:50%; left:50%;  margin-top:-221px; margin-left:-325px;     
+      
     }
     
   
@@ -40,7 +41,48 @@
 
   <script>    
 
-    
+    $(document).ready(function(){
+
+      var $grayLayer=$("<div id='grayLayer'></div>");
+      var $overLayer=$("<div id='overLayer'></div>");
+
+      var $imgMenu=$('#img_list>li')
+      $imgMenu.on('click', clickImgMenu);
+      $grayLayer.on('click', hideImg);
+
+      var clickIndex=null;
+      
+      function clickImgMenu(){{
+        clickIndex=$imgMenu.index($(this));
+        // alert(clickIndex);
+        showImg(clickIndex)
+      }
+
+      function showImg(index){
+
+        $grayLayer.show();
+        $grayLayer.appendTo($('body'));
+        $grayLayer.animate({opacity:0.9},300,'easeOutCubic');
+
+        $overLayer.show();
+        $overLayer.appendTo($('body'));  //'body'안에 overLayer를 넣는것
+
+        var $newImg=$("<img src='./images/photo"+(index+1)+".jpg'>")
+        $overLayer.html($newImg)
+
+      }
+
+      function hideImg(){
+        
+        $overLayer.hide()
+        $grayLayer.animate({opacity:0},300,'easeOutCubic',function(){
+          $grayLayer.hide()
+        })
+      }
+
+      }
+
+    })
 
 
     

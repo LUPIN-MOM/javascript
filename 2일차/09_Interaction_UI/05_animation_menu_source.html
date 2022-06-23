@@ -54,7 +54,26 @@
 
   <script>        
     
-   
+	$(document).ready(function(){
+		
+		var $mainMenu=$("#menu_list>li>a"); // 메뉴 지정 ( * a 테그적용 접근성 )
+
+    $mainMenu.on('mouseenter', mainMenuActivate)
+	$mainMenu.on('mouseleave', mainMenuInActivate)
+
+    function mainMenuActivate(){
+	  $(this).stop();  //하던 애니메이션 종료
+      $(this).animate({top:-30},300,'easeOutCubic')
+    }
+	
+	function mainMenuInActivate(){
+		$(this).stop();  //하던 애니메이션 종료
+		$(this).animate({top:0},300,'easeOutCubic')
+	}
+		
+
+	
+  });	
 	
 	
 	

@@ -57,21 +57,26 @@
     var $panel=$('#panel_list>li');
     var clickIndex=null;   //초기값을 null이나 0으로 정할수있음.
 
-    $tabMenu.eq(0).addClass('selected');   //class명앞에 '.'을 찍지않는다. //addClass:탭메뉴 활성화
-    $panel.hide();
-    $panel.eq(0).show();  //첫번째 탭메뉴만 보여주기
+    tabMenuActive(0);
+    showPanel(0);
 
     $tabMenu.on('click', tabMenuClick)
 
     function tabMenuClick(){
       clickIndex=$tabMenu.index($(this));
-      // alert(clickIndex)    //순번표시 확인
-      $tabMenu.removeClass('selected')   //클릭하지않은 탭닫기
-      $tabMenu.eq(clickIndex).addClass('selected')  //클릭한 탭보기
 
-      $panel.hide();  //클릭하지않은 패널 가리기
-      $panel.eq(clickIndex).show(); //클릭한 패널보기
+        tabMenuActive(clickIndex);
+        showPanel(clickIndex)
+    }
 
+    function tabMenuActive(index){
+        $tabMenu.removeClass('selected');
+        $tabMenu.eq(index).addClass('selected');
+    }
+
+    function showPanel(index){
+        $panel.hide();
+        $panel.eq(index).show()
     }
 
 
