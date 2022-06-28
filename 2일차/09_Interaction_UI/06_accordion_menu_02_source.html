@@ -68,28 +68,41 @@
   </style>
 
 
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
-  <!--jQuery 소스삽입  cdnjs 플러그인 사용 -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
-  <!--jQuery-ui 소스삽입 (aniamtion 기능, 다양한 ui component)  cdnjs 플러그인 사용 -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+<!--jQuery 소스삽입  cdnjs 플러그인 사용 -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+<!--jQuery-ui 소스삽입 (aniamtion 기능, 다양한 ui component)  cdnjs 플러그인 사용 -->
 
   <script>  
     
-    
+  $(document).ready(function(){   
 
+  var $mainMenu=$("#mainmenu_list>li>a") // 각 메인메뉴의 주의) 직계 a 테그 지정 ( Tab키 접근 - 웹접근성 )
+  var closeHeight=45; // 닫히는 높이는 고정 
+  var openHeight=null; // 초기값을 알수없어서 : 열리는 높이는 서브메뉴 갯수에 따라 다르게 지정 
 
+  $mainMenu.on("click focus", showSubMenu)
 
+  function showSubMenu(){
 
+    $mainMenu.parent().stop()
+    $mainMenu.parent().animate({height:closeHeight},300, 'easeOutCubic');
+    $mainMenu.removeClass('selected');
+    $mainMenu.children('span').removeClass('selected')
 
+    openHeight=closeHeight+(closeHeight*$(this).next().children().size())  // $(this) : 내가 클릭한 a태그
+    // alert(openHeight)
+    $(this).parent().stop();
+    $(this).parent().animate({height:openHeight},300,'easeOutCubic');
+    $(this).addClass('selected');
+    $(this).children('span').addClass('selected')
 
+  }
 
-
-
-
-
-
+  });	 
     
   </script>
+
 
 
 </head>

@@ -64,19 +64,50 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
   <!--jQuery-ui 소스삽입 (aniamtion 기능, 다양한 ui component)  cdnjs 플러그인 사용 -->
 
-  <script>      
-	
-	
-	
+  <script>
+
+    $(document).ready(function(){
+
+      var $mainMenu=$('.mainmenu>a');
+      var $subMenu=$('.submenu');
+      // var $headerInner=$('#header_inner')
+
+      $subMenu.css({opacity:0});
+      $subMenu.hide();
+
+      $mainMenu.on('mouseenter focuse', showSubMenu)
+      $headerInner.on('mouseleave', hideSubMenu)
+
+      function showSubMenu(){
+        // $mainMenu.stop()
+        $mainMenu.stop().animate({top:0},300,'easeOutCubic')   //원래대로 돌아오기
+        $subMenu.stop().animate({left:0, opacity:0},300, 'easeOutCubic', function(){
+          $(this).hide()
+        })
+
+        // $(this).stop()
+        $(this).stop().animate({top:-25},300,'easeOutCubic')
+
+        $(this).parent().next().show();
+        $(this).parent().next().stop().animate({left:-30, opacity:1},300, 'easeOutCubic')
+      }
+
+      // function menuInActivate(){
+      //   $mainMenu.stop().animate({top:0},300,'easeOutCubic')   //원래대로 돌아오기
+      //   $subMenu.stop().animate({left:0, opacity:0},300, 'easeOutCubic', function(){
+      //     $(this).hide())}
+      
+
+      // function menuActivate(selectMenu){
+      //   selectMenu.stop().animate({top:-25},300,'easeOutCubic')
+
+      //   selectMenu.parent().next().show();
+      //   $(this).parent().next().stop().animate({left:-30, opacity:1},300, 'easeOutCubic')
+      // }
+
+    })
 
 
-
-
-
-  
-	
-    
-    
   </script>
 
 

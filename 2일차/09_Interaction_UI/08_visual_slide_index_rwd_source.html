@@ -72,7 +72,38 @@
 
   <script>      
 	
+    $(window).load(function(){   //반응형 작업할때 이벤특 작성
 
+    var $visualWrap=$('#visual_wrap')
+    var $visualInner=$('#visual_inner')
+    var $visualList=$('visual_list')
+    var $visualLi=$('#visual_list>li')
+    var $visualImg=$('#visual_list>li>img')
+    var $btnImg=$('#visual_inner span img')
+    
+    var visualLength=$visualLi.size()  // $visualLi의 개수
+    var visualWidth=$visualInner.innerWidth()
+
+    var currentIndex=0;
+    var nextIndex=1;
+
+    visualReset()
+
+    $(window).on('resize', visualReset) // 창크기가 달라질때마다 바로 사이즈가 적용됨
+
+    function visualReset(){
+      visualWidth=$visualInner.innerWidth();
+      $visualLi.css({width:visualWidth, left:visualWidth, opacity:1})
+      $visualLi.eq(currentIndex).css({left:0, opacity:1})
+      $visualImg.css({width:visualWidth});
+      $visualWrap.css({height:$visualImg.outerHeight()})
+      $btnImg.css({width:visualWidth/20})
+
+    }
+
+
+      
+    })
 	
 
 
