@@ -117,7 +117,49 @@
 
   <script>      
 		
-			
+		$(document).ready(function(){
+
+			$(window).on('scroll', scrollWindow)
+
+			function scrollWindow(){
+
+				var scrollHeight=$(document).scrollTop()    //스크롤될때 스크롤 되어있는 scrollTop() 값을 구해  scrollHeight 변수에 대입
+
+				$('#start_bg').css({top:0-scrollHeight/2})  // scroll 올라가는 속도 조절
+				$('#camera_bottom').css({top:686-scrollHeight/4})
+				$('#camera_top').css({top:254-scrollHeight/4})
+
+				if(scrollHeight>=800){
+					$('#main_photo').addClass('rotate')
+				}else{
+					$('#main_photo').removeClass('rotate')
+				}
+
+				$('#cover_left').css({top:962-scrollHeight/1.5})
+				$('#cover_right').css({top:962-scrollHeight/1.5})
+
+				var coverDistance=null;
+
+				if(scrollHeight>=2000 && scrollHeight<3600){
+					coverDistance=(2000-scrollHeight)/1.5
+				}else if(scrollHeight>=3600){
+					coverDistance=-2000;
+				}else{
+					coverDistance=0;
+				}
+
+				$('#cover_left').css({left:coverDistance});
+				$('#cover_right').css({right:coverDistance});
+
+				if(scrollHeight>=3000){
+					$('#copy_tistory').stop().animate({top:150},800,'easeOutCubic')
+				}else{
+					$('#copy_tistory').stop().animate({top:1500},800,'easeOutCubic')
+				}
+			}
+
+
+		})	
 
 
 

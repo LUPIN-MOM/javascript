@@ -80,16 +80,35 @@
     var $visualLi=$('#visual_list>li')
     var $visualImg=$('#visual_list>li>img')
     var $btnImg=$('#visual_inner span img')
+    var $nextBtn=$('#next_btn')
+    var $prevBtn=$('#prev_btn')
+    
     
     var visualLength=$visualLi.size()  // $visualLi의 개수
     var visualWidth=$visualInner.innerWidth()
 
     var currentIndex=0;
     var nextIndex=1;
+    var timer=null;
 
     visualReset()
+    autoPlay()
 
     $(window).on('resize', visualReset) // 창크기가 달라질때마다 바로 사이즈가 적용됨
+    $nextBtn.on('click', slideNext)
+    $prevBtn.on('click', slidePrev)
+    $visualWrap.on('mouseenter', stopAutoPlay)
+    $visualWrap.on('mouseleave', autoPlay)
+
+
+    function autoPlay(){
+      timer=setInterval(slideNext,2000)   //자동으로 슬라이드가 2초마다 
+    }
+
+    function stopAutoPlay(){
+      clearInterval(timer)  //마우스 올리면 이미지 멈춤
+    }
+
 
     function visualReset(){
       visualWidth=$visualInner.innerWidth();
@@ -99,6 +118,39 @@
       $visualWrap.css({height:$visualImg.outerHeight()})
       $btnImg.css({width:visualWidth/20})
 
+    }
+
+    function slideNext(){  //다음버튼
+      
+      nextIndex=currentIndex+1   // 1.이미지순차를 더함
+      if(nextIndex>=visualLength){  // 5. 보여줄 이미지 순번이 없다면 처음이미지로 돌아가기
+        nextIndex=0
+      }
+
+      $visualLi.eq(currentIndex).stop().animate({left:-visualWidth, opacity:0},1000, 'easeOutCubic')  // 2.이미지를 왼쪽으로 가도록하면서 opacity:0 으로 사라지도록
+      
+      $visualLi.eq(nextIndex).css({left:visualWidth})   //6. 처음 이미지 순번을 왼쪽에서 시작하도록
+      $visualLi.eq(nextIndex).stop().animate({left:0, opacity:1},1000, 'easeOutCubic')  //3. 다음순번 이미지
+
+      currentIndex=nextIndex;  //4.위의 이벤트수행하고 이전버튼을 누르면 다음이미지로 돌아감
+    
+    }
+
+
+    function slidePrev(){  //다음버튼
+      
+      nextIndex=currentIndex-1   // 1.이미지순차를 빼기함
+      if(nextIndex<0){  // 5. 보여줄 이미지 순번이 없다면 처음이미지로 돌아가기
+        nextIndex=visualLength-1;   //마지막 순번은 개수보다 하나가 작아서
+      }
+
+      $visualLi.eq(currentIndex).stop().animate({left:visualWidth, opacity:0},1000, 'easeOutCubic')  // 2.이미지를 오른쪽으로 가도록하면서 opacity:0 으로 사라지도록
+      
+      $visualLi.eq(nextIndex).css({left:-visualWidth, opacity:0})   //6. 처음 이미지 순번을 오른쪽에서 시작하도록
+      $visualLi.eq(nextIndex).stop().animate({left:0, opacity:1},1000, 'easeOutCubic')  //3. 다음순번 이미지
+
+      currentIndex=nextIndex;  //4.위의 이벤트수행하고 이전버튼을 누르면 다음이미지로 돌아감
+    
     }
 
 
